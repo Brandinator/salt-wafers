@@ -1,0 +1,77 @@
+#header-bottom-right {
+  width: $sidebar-width - ($sidebar-padding * 2);
+  padding: 10px $sidebar-padding 0;
+  border-radius: 0;
+  background-color: $content-bg-color;
+  right: $body-margin;
+  text-align: right;
+  margin-bottom: -50px;
+  height: 40px;
+  a {
+    vertical-align: middle;
+    text-indent: 9999px;
+    white-space: nowrap;
+  }
+  a.pref-lang {
+    @include sprite($header-icon-cog);
+    // text-indent: 9999px;
+    display: inline-block;
+    margin-bottom: -2px;
+  }
+  &.res-userbar-toggle > .user { margin-left: 0; }
+  .user {
+    font-size: 0;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 3px;
+    float: left;
+    text-align: left;
+    > a {
+      font-size: 14px;
+      color: $primary-color;
+    }
+    > .userkarma {
+      font-size: 10px;
+      display: block;
+      a { color: $link-color; }
+    }
+  }
+}
+#userbarToggle { display: none; }
+
+#mail {
+  &.nohavemail { @include sprite($header-icon-mail); }
+  // &.havemail { @include sprite($header-icon-mail-a); }
+}
+
+#modmail {
+  &.nohavemail { @include sprite($header-icon-briefcase); }
+  // &.havemail { @include sprite($header-icon-briefcase-a); }
+}
+
+
+#new_modmail {
+  &.nohavemail { @include sprite($header-icon-shield); }
+  &.havemail { @include sprite($header-icon-shield-a); }
+}
+
+.logout a {
+  display: inline-block;
+  // text-indent: 9999px;
+  @include sprite($header-icon-logout);
+}
+
+#RESSettingsButton.gearIcon {
+  &::after {
+    content:'';
+    cursor: pointer;
+    display: inline-block;
+    text-shadow: none;
+    @include sprite($header-icon-tools);
+    // @include sprite-h($header-icon-tools-h);
+  }
+}
+
+.RESHoverDropdownList {
+  margin-left: -150px !important;
+}

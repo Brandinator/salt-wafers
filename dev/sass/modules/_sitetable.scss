@@ -1,0 +1,87 @@
+
+.content {
+  position: relative;
+  // margin: 0 375px 0 20px;
+  margin: 0 ($sidebar-width + $body-margin + $sidebar-margin) 0 $body-margin;
+  background-color: $content-bg-color;
+}
+
+.content > .spacer {
+  margin-bottom: 0;
+}
+
+.organic-listing {
+  border: none;
+  .link.promotedlink { padding: 0; }
+}
+
+.link, .organic-listing {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid $content-border-color;
+}
+
+.rank { display: none; }
+
+//Midcol
+
+.arrow {
+  &:first-child { margin-top: 12px; }
+  &.up { @include sprite($arrow-up) }
+  &.upmod { @include sprite($arrow-up-a);}
+  &.down { @include sprite($arrow-down);}
+  &.downmod { @include sprite($arrow-down-a);}
+}
+
+.arrow.down {
+  @include sprite($arrow-down);
+}
+
+.link .score {
+  padding: 10px 0;
+}
+
+.link .midcol {
+  margin: 0;
+  // padding: 0 16px;
+  min-width: 60px;
+  height: 76px;
+  background-color: $content-bg-color-alt;
+  border-right: 1px solid $content-border-color;
+}
+
+.thumbnail {
+  height: 60px;
+  text-align: center;
+  margin: 8px;
+  img {
+    margin: 0 -100%;
+    min-height: 100%;
+    width: auto;
+  }
+}
+
+.entry {
+  padding: 8px 0;
+
+  .buttons li a {
+    font-size: 11px;
+    color: $link-color-alt;
+  }
+}
+
+.thing .title {
+  font-family: calibri, arial, helvetica, sans-serif;
+  font-size: 21px;
+  font-weight: 100;
+  color: $link-color;
+  &:visited { color: lighten($link-color, 10%); }
+}
+//Hide all other flat-list items until hover
+.link .buttons li {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.link:hover .buttons li, .link .buttons .first { opacity: 100; }
+

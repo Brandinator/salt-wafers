@@ -1,0 +1,14 @@
+.footer-parent, .debuginfo { background-color: darken($page-bg-color,5); }
+
+.footer-parent {
+  padding-top: 0;
+  margin-top: 20px;
+  margin-bottom: -11px;
+}
+
+.footer.rounded {
+  border: none;
+  .col {
+    border-color: $page-bg-color;
+  }
+}

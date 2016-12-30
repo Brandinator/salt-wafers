@@ -1,0 +1,24 @@
+$main-sprite: '%%sprite%%';
+
+@mixin sprite-image($sprite) {
+  $sprite-image: $main-sprite;
+  background-image: url(#{$sprite-image});
+}
+
+// @if variable-exists($sprite . 'h') {
+//     /* I get output to the CSS file */
+// }
+
+@mixin sprite-h($sprite) {
+  &:hover { @include sprite-position($sprite); }
+}
+
+body {
+  overflow-x: hidden;
+  font-family: arial, verdana, helvetica, sans-serif;
+}
+
+.tagline a {
+  color: $primary-color;
+}
+
