@@ -1,2 +1,3 @@
-img/*.psd
-sass/
+node_modules/
+dev/img/*.psd
+prod/
