@@ -9,12 +9,24 @@
   height: 40px;
   a {
     vertical-align: middle;
-    text-indent: 9999px;
+    text-align: left;
+    text-indent: -9999px;
     white-space: nowrap;
+  }
+  a.message-count {
+    position: relative;
+    margin: -6px 0 0 -6px;
+    padding: 2px 4px;
+    text-indent: 0;
+    line-height: initial;
+    font-size: 7px;
+    border-radius: 4px;
+    border-bottom: 1px solid $content-bg-color;
+    border-left: 1px solid $content-bg-color;
   }
   a.pref-lang {
     @include sprite($header-icon-cog);
-    // text-indent: 9999px;
+    @include sprite-h($header-icon-cog-h);
     display: inline-block;
     margin-bottom: -2px;
   }
@@ -37,16 +49,21 @@
     }
   }
 }
+
 #userbarToggle { display: none; }
 
 #mail {
   &.nohavemail { @include sprite($header-icon-mail); }
-  // &.havemail { @include sprite($header-icon-mail-a); }
+  &.nohavemail:hover { @include sprite($header-icon-mail-h); }
+  &.havemail { @include sprite($header-icon-mail-a); }
 }
 
 #modmail {
-  &.nohavemail { @include sprite($header-icon-briefcase); }
-  // &.havemail { @include sprite($header-icon-briefcase-a); }
+  &.nohavemail {
+    @include sprite($header-icon-briefcase);
+    @include sprite-h($header-icon-briefcase-h);
+  }
+  &.havemail { @include sprite($header-icon-briefcase-a); }
 }
 
 
@@ -59,6 +76,7 @@
   display: inline-block;
   // text-indent: 9999px;
   @include sprite($header-icon-logout);
+  @include sprite-h($header-icon-logout-h);
 }
 
 #RESSettingsButton.gearIcon {
@@ -68,7 +86,7 @@
     display: inline-block;
     text-shadow: none;
     @include sprite($header-icon-tools);
-    // @include sprite-h($header-icon-tools-h);
+    @include sprite-h($header-icon-tools-h);
   }
 }
 

@@ -11,9 +11,19 @@ $header-height: 450px;
 
 #header {
   height: $header-height;
-  background: transparent;
+  background-color: transparent;
   border: none;
   z-index: initial;
+  &::before { // Shadows for left and right edges
+    position: absolute;
+    top: 0; left: 0;
+    content: '';
+    width: 100%; height: $header-height + 200;
+    background: linear-gradient(to right, rgba(33,33,33,1) 0%,rgba(33,33,33,0) 15%,rgba(33,33,33,0) 85%,rgba(33,33,33,1) 100%);
+    background-position: top center;
+    background-size: 2180px;
+    z-index: -1;
+  }
 }
 
 #header-bottom-left {
@@ -81,9 +91,8 @@ $header-height: 450px;
 }
 
 body {
-  z-index: 0;
   background-color: $page-bg-color;
-  &::after {
+  &::after { // Shadows for background image.
     content: '';
     display: block;
     position: absolute;
@@ -97,7 +106,6 @@ body {
 }
 
 
-
 input[name=uh] ~ a::before {
   content: '';
   display: block;
@@ -105,27 +113,13 @@ input[name=uh] ~ a::before {
   top: -$header-height; right: -($body-margin);
   width: calc(100vw - 14px);
   height: 700px;
-  // background: $page-bg-color url($header02) top center/100% no-repeat;
   background-color: $page-bg-color;
   background-image: url($header05);
   background-position: top center;
   background-size: 100%;
   background-repeat: no-repeat;
   pointer-events: none;
-  z-index: -1;
-}
-
-body::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1920px;
-  height: 700px;
-  background: linear-gradient(to right, rgba(33,33,33,1) 0%,rgba(33,33,33,0) 15%,rgba(33,33,33,0) 85%,rgba(33,33,33,1) 100%);
-  z-index: -1;
+  z-index: -2;
 }
 
 input[name=uh][value$="0"] ~ a::before { background-image: url($header00); }
@@ -142,8 +136,8 @@ input[name=uh][value$="6"] ~ a::before { background-image: url($header06); }
   }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 2180px) {
   input[name=uh] ~ a::before {
-    background-size: 1920px;
+    background-size: 2180px;
   }
 }

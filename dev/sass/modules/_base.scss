@@ -14,11 +14,17 @@ $main-sprite: '%%sprite%%';
 }
 
 body {
-  overflow-x: hidden;
   font-family: arial, verdana, helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 .tagline a {
   color: $primary-color;
 }
 
+.pseudo-icon {
+  content: '';
+  display: inline-block;
+  margin: 0 3px;
+  vertical-align: middle;
+}

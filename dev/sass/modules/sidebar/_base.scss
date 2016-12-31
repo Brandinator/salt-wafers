@@ -1,5 +1,6 @@
 $sidebar-padding: 10px;
 $sidebar-width: 340px;
+$sidebar-content-width: $sidebar-width - ($sidebar-padding * 2);
 
 @mixin calibri {
   font-family: calibri, arial, helvetica, sans-serif;
@@ -11,7 +12,7 @@ $sidebar-width: 340px;
 .side {
   margin: 50px $body-margin $body-margin 0;
   padding: 0 $sidebar-padding;
-  width: $sidebar-width - ($sidebar-padding * 2);
+  width: $sidebar-content-width;
   background-color: $content-bg-color;
 }
 
@@ -19,18 +20,17 @@ $sidebar-width: 340px;
 
 
 body.listing-page {
-  .side {
-    > .spacer:nth-child(2) {
-      position: relative;
-      top: 80px;
-    }
-    > .spacer:nth-child(3), > .spacer:nth-child(4) {
-      position: relative;
-      top: -262px;
-    }
-  }
   &.moderator .side > .spacer:nth-child(2) {
     top: 160px;
+  }
+  .side > .spacer:nth-child(2) {
+    position: relative;
+    top: 80px;
+  }
+  .side > .spacer:nth-child(3),
+  &.moderator .side > .spacer:nth-child(4) {
+    position: relative;
+    top: -262px;
   }
 }
 
@@ -50,13 +50,13 @@ body.listing-page {
 }
 
 
-.md h2 {
+.md h2, .spacer > .sidecontentbox .title {
   box-sizing: border-box;
   margin-left: -($sidebar-padding);
   padding: 4px 12px;
   width: $sidebar-width;
   color: #fff;
-  @include calibri
+  @include calibri;
   font-size: 20px;
   text-transform: uppercase;
   background-color: $primary-color;
@@ -65,24 +65,57 @@ body.listing-page {
   border-bottom-width: 6px;
 }
 
+.spacer > .sidecontentbox .title {
+  margin-bottom: 10px;
+  h1 {
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
 #ad_main_top {
   padding: 0 (20 - $sidebar-padding);
+}
+
+.titlebox form.toggle,
+.leavemoderator {
+  padding: 6px 5px;
+}
+
+.toggle input[type='checkbox'] {
+  vertical-align: middle;
 }
 
 // Subscriber and Reader count
 
 .subscribers {
-  margin-right: 20px;
+  position: relative;
+  &::before {
+    display: block;
+    position: absolute;
+    content: '';
+    top: -5px; left: 0;
+    padding: 5px 0;
+    width: $sidebar-content-width;
+    height: 100%;
+    background-color: $content-bg-color-alt;
+  }
+  .number, .word { position: relative; }
   .number::after { content: 'k-poppers' }
 }
 
 .users-online {
   &::before { display: none; }
   .number::after { content: 'here now'; }
+  + div, + form { clear: left; }
 }
 
-.subscribers, .users-online {
+.subscribers,
+.users-online {
   float: left;
+  position: relative;
+  padding: 13px 10px;
+  width: 90px;
   .number {
     display: block;
     font-size: 25px;
@@ -96,12 +129,40 @@ body.listing-page {
 }
 
 
+body.res {
+  .subscribers,
+  .users-online,
+  .subButtons {
+    top: -31px;
+  }
+}
+
+body:not(.res) {
+  .titlebox .subscribe-button {
+    position: relative;
+    z-index: 1;
+    top: 14px;
+    .add { background: #3c7020; }
+    .remove { background: #702020; }
+    .active {
+      display: inline-block;
+      padding: 10px 15px;
+    }
+  }
+}
+
+.res-sr-style-toggle {
+  position: relative;
+  top: 70px;
+}
+
 .subButtons {
   float: right;
+  position: relative;
+  z-index: 1;
   width: 100px;
-  > span {
-  }
-  .fancy-toggle-button .active, .res-fancy-toggle-button {
+  .res-fancy-toggle-button,
+  .fancy-toggle-button .active {
     display: inline-block;
     width: 90px;
     text-align: center;
@@ -110,14 +171,23 @@ body.listing-page {
     text-transform: uppercase;
     font-size: 10;
     @include calibri;
-
   }
-}
-
-.fancy-toggle-button a {
-
 }
 
 .leavemoderator {
   clear: both;
+}
+.titlebox .tagline {
+  margin: 0;
+  padding: 3px 40px 5px;
+  background-color: #fff;
+  > .author { margin-left: 8px; }
+  &::after {
+    display: inline-block;
+    content: '';
+    position: relative;
+    top: -3px;
+    width: 100%;
+    border-top: 1px dotted darken($content-bg-color,25);
+  }
 }

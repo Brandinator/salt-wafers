@@ -1,24 +1,90 @@
-
 .content {
   position: relative;
-  // margin: 0 375px 0 20px;
   margin: 0 ($sidebar-width + $body-margin + $sidebar-margin) 0 $body-margin;
   background-color: $content-bg-color;
-}
-
-.content > .spacer {
-  margin-bottom: 0;
+  > .spacer { margin-bottom: 0; }
 }
 
 .organic-listing {
-  border: none;
+  border: 0;
   .link.promotedlink { padding: 0; }
 }
 
-.link, .organic-listing {
+.link,
+.organic-listing {
   margin: 0;
   padding: 0;
   border-bottom: 1px solid $content-border-color;
+  transition: background .3s;
+  display: flex;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background-color: #fff;
+    z-index: -1;
+    width: 0;
+    transition: width .3s;
+  }
+  &:hover::before {
+    width: 100%;
+  }
+  &::after {
+    display: block;
+    position: absolute;
+    content: '';
+    top: -1px; right: 0;
+    width: 4px;
+    height: calc(100% - -2px);
+    background-color: $primary-color;
+    animation: sideReturn .3s forwards
+  }
+  &:hover::after {
+    animation: sideBounce .6s forwards;
+  }
+}
+
+.link,
+.organic-listing {
+
+
+}
+
+.organic-listing .link::after { display: none; }
+
+.link {
+
+}
+
+// @include @keyframes(linkBackground) {
+//   from {
+//     background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 100%)
+//   }
+// }
+
+@include keyframes(sideBounce) {
+  0% { width: 4px; }
+  20% { width: 16px; }
+  50%, 80%, 100% { width: 8px; }
+  60% { width: 12px; }
+}
+
+@include keyframes(sideReturn) {
+  from { width: 8px; }
+  to { width: 4px; }
+}
+
+
+
+.RES-keyNav-activeThing {
+  // background: darken($content-bg-color,1);
+  background: rgba($secondary-color,.05);
+}
+
+body .RES-keyNav-activeElement {
+  background: transparent !important;
 }
 
 .rank { display: none; }
@@ -33,19 +99,14 @@
   &.downmod { @include sprite($arrow-down-a);}
 }
 
-.arrow.down {
-  @include sprite($arrow-down);
-}
-
 .link .score {
   padding: 10px 0;
 }
 
 .link .midcol {
   margin: 0;
-  // padding: 0 16px;
   min-width: 60px;
-  height: 76px;
+  // height: 76px; // Height removed for flex
   background-color: $content-bg-color-alt;
   border-right: 1px solid $content-border-color;
 }
@@ -62,13 +123,23 @@
 }
 
 .entry {
-  padding: 8px 0;
-
+  padding: 0;
+  flex-grow: 1;
   .buttons li a {
+    display: inline-block;
     font-size: 11px;
     color: $link-color-alt;
   }
 }
+
+.res-media-independent {
+  padding-right: 3px;
+}
+
+.res-media-max-size {
+  max-width: 100% !important;
+}
+
 
 .thing .title {
   font-family: calibri, arial, helvetica, sans-serif;
@@ -80,8 +151,14 @@
 //Hide all other flat-list items until hover
 .link .buttons li {
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity .3s;
 }
 
-.link:hover .buttons li, .link .buttons .first { opacity: 100; }
+.link:hover .buttons li,
+.link .buttons .first { opacity: 100; }
+
+.link .buttons .comments::before {
+  @extend .pseudo-icon;
+  @include sprite($entry-button-chat);
+}
 
