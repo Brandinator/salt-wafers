@@ -1,12 +1,31 @@
+// Theme
+// $primary-color: #e05c42;
+$primary-color: #89de52;
+$secondary-color: #5389d2;
+$text-color: #000;
+$text-color-alt: lighten($text-color,15);
+
 $content-bg-color: #fafafa;
 $content-bg-color-alt: darken($content-bg-color, 5%);
 $content-border-color: #e4e4e4;
 $page-bg-color: #212121;
-$primary-color: #e05c42;
-$secondary-color: #5389d2;
-
 $link-color: #2f2f2f;
 $link-color-alt: #4d4d4d;
 
+
+// Night Mode
+$content-bg-color-n: #1b1b1b;
+$content-bg-color-alt-n: darken($content-bg-color-n, 3%);
+$content-border-color-n: #2d2d2d;
+$page-bg-color-n: #111;
+$link-color-n: #ddd;
+$link-color-alt-n: #bbb;
+
+// Base Styling
 $body-margin: 40px;
 $sidebar-margin: 15px;
+
+// Sidebar
+$sidebar-padding: 10px;
+$sidebar-width: 340px;
+$sidebar-content-width: $sidebar-width - ($sidebar-padding * 2);

@@ -1,0 +1,33 @@
+body.res-nightmode {
+  background-color: $page-bg-color-n;
+  &::after {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba($page-bg-color-n,0.95) 77%, rgba($page-bg-color-n,1) 87%);
+  }
+  #header {
+    background-color: initial;
+  }
+  .tabmenu li a,
+  .tabmenu li.selected a {
+    background: initial;
+  }
+  #header-bottom-right { background-color: $content-bg-color-n; }
+  .content { background-color: $content-bg-color-n;}
+  .link::before,
+  .organic-listing::before {
+    background-color: lighten($content-bg-color-n,2);
+  }
+  .title a { color: $link-color-n; }
+  .title a:visited { color: $link-color-alt-n; }
+  .side {
+    background-color: $content-bg-color-n;
+    .titlebox,
+    .usertext-body .md ol,
+    .usertext-body .md ul {
+      background-color: inherit;
+    }
+  }
+  .midcol {
+    background-color: $content-bg-color-alt-n;
+  }
+  .thing, .midcol { border-color: $content-border-color-n;}
+}

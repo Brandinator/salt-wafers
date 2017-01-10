@@ -1,0 +1,25 @@
+.side .md ol:first-of-type {
+  counter-reset: li;
+  padding: 0;
+  width: $sidebar-width;
+  margin-left: -$sidebar-padding;
+  li {
+    position: relative;
+    list-style: none;
+    border-bottom: 1px solid $content-border-color;
+    padding: 12px 38px;
+    font-size: 14px;
+    &::before {
+      content: counter(li)".";
+      counter-increment: li;
+      position: absolute;
+      top: 8px; left: 0;
+      padding: 4px 0;
+      font-size: 18px;
+      // background-color: teal;
+      color: $content-border-color;
+      width: 40px;
+      text-align: center;
+    }
+  }
+}

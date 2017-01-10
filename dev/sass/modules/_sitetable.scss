@@ -1,7 +1,7 @@
 .content {
   position: relative;
   margin: 0 ($sidebar-width + $body-margin + $sidebar-margin) 0 $body-margin;
-  background-color: $content-bg-color;
+  // background-color: $content-bg-color;
   > .spacer { margin-bottom: 0; }
 }
 
@@ -10,10 +10,15 @@
   .link.promotedlink { padding: 0; }
 }
 
+.link:first-of-type {
+  border-top: 1px solid $content-border-color;
+}
+
 .link,
 .organic-listing {
   margin: 0;
   padding: 0;
+  background-color: $content-bg-color;
   border-bottom: 1px solid $content-border-color;
   transition: background .3s;
   display: flex;
@@ -39,24 +44,17 @@
     width: 4px;
     height: calc(100% - -2px);
     background-color: $primary-color;
-    animation: sideReturn .3s forwards
+    // animation: sideReturn .3s forwards
   }
   &:hover::after {
-    animation: sideBounce .6s forwards;
+    // animation: sideBounce .6s forwards;
   }
-}
-
-.link,
-.organic-listing {
-
-
+  .listing-page &::after { animation: sideReturn .3s forwards; }
+  .listing-page &:hover::after { animation: sideBounce .6s forwards; }
 }
 
 .organic-listing .link::after { display: none; }
 
-.link {
-
-}
 
 // @include @keyframes(linkBackground) {
 //   from {
@@ -92,11 +90,43 @@ body .RES-keyNav-activeElement {
 //Midcol
 
 .arrow {
-  &:first-child { margin-top: 12px; }
   &.up { @include sprite($arrow-up) }
   &.upmod { @include sprite($arrow-up-a);}
   &.down { @include sprite($arrow-down);}
   &.downmod { @include sprite($arrow-down-a);}
+}
+
+// Downvote warning
+.arrow.down {
+  position: relative;
+  &:hover::after {
+    display: block;
+    position: absolute;
+    // right: -355px;
+    left: 20px;
+    bottom: -5px;
+    padding: 5px 0;
+    width: 350px;
+    text-align: center;
+    font-size: 11px;
+    content: "Only downvote if this is rude or not suited for the subreddit!";
+    font-weight: bold;
+    color: #fff;
+    background-color: rgba(#990606,.9);
+    border: 1px solid lighten(#990606,10);
+    border-radius: 3px;
+    @extend .bounceIn;
+    animation-delay: .2s;
+  }
+}
+
+.comment {
+  .arrow.down,
+  .arrow.downmod {
+    &::after {
+      // bottom: -10px;
+    }
+  }
 }
 
 .link .score {
@@ -109,6 +139,13 @@ body .RES-keyNav-activeElement {
   // height: 76px; // Height removed for flex
   background-color: $content-bg-color-alt;
   border-right: 1px solid $content-border-color;
+  .arrow.up,
+  .arrow.upmod { margin-top: 12px; }
+}
+
+.midcol {
+  overflow: visible;
+  // position: relative;
 }
 
 .thumbnail {
@@ -159,6 +196,7 @@ body .RES-keyNav-activeElement {
 
 .link .buttons .comments::before {
   @extend .pseudo-icon;
+  margin-right: 3px;
   @include sprite($entry-button-chat);
 }
 

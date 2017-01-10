@@ -1,3 +1,9 @@
+@include keyframes(iconBounce) {
+  20% { margin-top: -10px }
+  50%, 80%, 100% { margin-top: 0; }
+  60% { margin-top: -5px; }
+}
+
 #header-bottom-right {
   width: $sidebar-width - ($sidebar-padding * 2);
   padding: 10px $sidebar-padding 0;
@@ -12,6 +18,9 @@
     text-align: left;
     text-indent: -9999px;
     white-space: nowrap;
+    &:hover {
+      animation: iconBounce .6s .1s backwards;
+    }
   }
   a.message-count {
     position: relative;

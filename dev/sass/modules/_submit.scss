@@ -1,0 +1,19 @@
+.submit-page {
+  .content > h1 {
+    @extend .heading;
+    background-color: #fff;
+    margin: 0;
+    color: $text-color
+    // padding: 10px;
+  }
+}
+#newlink {
+  margin: 0;
+  background-color: $content-bg-color;
+  padding: 10px;
+}
+
+.roundfield {
+  background-color: $content-bg-color-alt;
+  // width: 600px;
+}

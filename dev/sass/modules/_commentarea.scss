@@ -1,0 +1,44 @@
+.link .usertext-body .md {
+  border: 0;
+  background-color: $content-bg-color-alt;
+  border-radius: 0;
+  padding: 15px 15px 20px 15px
+}
+
+.commentarea {
+  .panestack-title,
+  .menuarea,
+  .usertext {
+    background: $content-bg-color;
+    margin: 0;
+    padding: 8px;
+  }
+  .menuarea + .usertext {
+    margin-bottom: 10px;
+  }
+  .tagline {
+    font-size: 11px;
+  }
+  .comment {
+    margin: 0 0 8px 0;
+    padding: 15px 10px;
+    background-color: $content-bg-color;
+    border-left: 4px solid $primary-color;
+    .entry { margin-bottom: 15px; }
+    .author.submitter { color: $secondary-color; }
+    .author { color: $primary-color; }
+    .buttons {
+      font-size: 9px;
+      a {
+        font-weight: normal;
+        color: lighten($link-color,45)
+      }
+    }
+    .usertext { padding: 0; }
+    > .child .comment {
+      border-left: 1px dotted $primary-color;
+      padding: 0 0 0 10px;
+      border-bottom: none;
+    }
+  }
+}
