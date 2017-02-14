@@ -1,3 +1,4 @@
+// Rules CSS
 .side .md ol:first-of-type {
   counter-reset: li;
   padding: 0;
@@ -21,5 +22,13 @@
       width: 40px;
       text-align: center;
     }
+  }
+}
+
+.hover.pagename.redditname a {
+  font-size: 0;
+  &::before {
+    content: 'KPICS';
+    font-size: 79px;
   }
 }

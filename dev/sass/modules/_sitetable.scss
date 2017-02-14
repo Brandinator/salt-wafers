@@ -77,8 +77,7 @@
 
 
 .RES-keyNav-activeThing {
-  // background: darken($content-bg-color,1);
-  background: rgba($secondary-color,.05);
+  background: darken($content-bg-color,2);
 }
 
 body .RES-keyNav-activeElement {
