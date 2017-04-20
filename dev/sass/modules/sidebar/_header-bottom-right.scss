@@ -4,6 +4,13 @@
   60% { margin-top: -5px; }
 }
 
+// @include keyframes(iconBounce) {
+//   20% { transform: translateY(-10px); }
+//   50%, 80%, 100% { transform: translateY(0); }
+//   60% { transform: translateY(-5px); }
+// }
+
+
 #header-bottom-right {
   width: $sidebar-width - ($sidebar-padding * 2);
   padding: 10px $sidebar-padding 0;

@@ -37,6 +37,10 @@ $header-height: 450px;
   display: inline-block;
   font-family: "Trebuchet MS", Trebuchet, Helvetica, sans-serif;
   margin-top: 280px;
+  #header-img-a:hover::before,
+  .pagename:hover {
+    // animation: iconBounce .6s .1s backwards;
+  }
 }
 
 #header-img-a {
@@ -64,8 +68,10 @@ $header-height: 450px;
   font-weight: normal;
   margin: 0;
   display: inline-block;
-  // a {  font-size: 5.5em; }
-  a {  font-size: 79px; }
+  a {
+    font-size: 79px;
+    &:hover { text-decoration: none; }
+  }
 }
 
 #header-img-a::before, .pagename a {
@@ -73,63 +79,99 @@ $header-height: 450px;
   font-family: "Myriad Pro", "Geneva", "Helvetica neue", "Helvetica", sans-serif;
 }
 
-.tabmenu {
+@mixin tabmenu-item($width,$margin,$alignment) {
+  display: inline-block;
+  @if $alignment == 'left' {
+    float: left;
+    left: -($margin);
+  }
+  @if $alignment =='right' {
+    float: right;
+    right: -($margin);
+  }
+  a { width: $width; }
+}
+
+@mixin tabmenu-edge($alignment) {
+  &::after {
+    display: block;
+    width: 120px;
+    @if $alignment == 'left' { left: -120px;}
+    @if $alignment == 'right' { left: auto; right: -120px; }
+  }
+}
+
+
+body.listing-page #header .tabmenu {
+  li:nth-of-type(-n+2) { // Hot, New
+    @include tabmenu-item(60px,180px,'left')
+  }
+  li:nth-of-type(5), // Top
+  li:nth-of-type(7) { // Wiki
+    @include tabmenu-item(60px,180px,'right')
+  }
+  li:nth-of-type(5) {
+    @include tabmenu-edge('right')
+  }
+}
+
+body.comments-page #header .tabmenu {
+  li:first-of-type {
+    @include tabmenu-item(180px,180px,'left')
+  }
+  li:nth-of-type(2) {
+    @include tabmenu-item(180px,180px,'right')
+    @include tabmenu-edge('right')
+  }
+  li:first-child:nth-last-child(2) {
+    // display: none;
+    // visibility: hidden;
+  }
+  min-width: 360px;
+}
+
+
+#header .tabmenu {
   display: block;
-  text-transform: capitalize;
-  // font-size: 1.8em;
-  font-size: 22px;
   margin-top: -50px;
   width: 100%;
+  font-size: 22px;
   li {
     position: relative;
     display: none;
     margin: 0;
     font-weight: normal;
     vertical-align: top;
-    &:nth-of-type(-n+2),
-    &:nth-of-type(5),
-    &:nth-of-type(7) {
-      display: inline-block;
+    // Show Hot, New, Wiki, and Top on listing page
+    &:hover {
+      a { color: $primary-color; }
+      &::before { background-color: $primary-color; }
     }
-    &::before,
-    &:first-child::after,
-    &:nth-of-type(5)::after {
-      display: block;
+    &::after,
+    &::before {
       position: absolute;
+      display: block;
       content: '';
       top: -1px;
+      left: 0;
       width: 100%;
       height: 1px;
       background-color: #fff;
     }
-    &::before { left: 0; }
-    &:first-child::after {
-      left: -150%;
-      width: 150%;
+    &::after { display: none; }
+    &:first-child {
+      @include tabmenu-edge('left')
     }
-    &:nth-of-type(5)::after {
-      width: 150%;
-      right: -150%;
-    }
-  }
-  li:nth-child(-n+2) {
-    float: left;
-    left: -180px;
 
-  }
-  li:nth-child(5),
-  li:nth-child(7) {
-    float: right;
-    right: -180px;
   }
   li a, li.selected a {
     background-color: transparent;
   }
   li a {
     display: inline-block;
-    color: #fff;
     padding: 3px 10px;
     width: 60px;
+    color: #fff;
   }
   li.selected {
     &::before {

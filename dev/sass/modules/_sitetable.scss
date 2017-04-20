@@ -80,7 +80,8 @@
   background: darken($content-bg-color,2);
 }
 
-body .RES-keyNav-activeElement {
+body .RES-keyNav-activeElement,
+body.res-nightmode .RES-keyNav-activeElement {
   background: transparent !important;
 }
 
@@ -88,7 +89,7 @@ body .RES-keyNav-activeElement {
 
 //Midcol
 
-.arrow {
+.arrow, .res-nightmode .arrow {
   &.up { @include sprite($arrow-up) }
   &.upmod { @include sprite($arrow-up-a);}
   &.down { @include sprite($arrow-down);}
@@ -129,7 +130,7 @@ body .RES-keyNav-activeElement {
 }
 
 .link .score {
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 .link .midcol {
@@ -139,7 +140,7 @@ body .RES-keyNav-activeElement {
   background-color: $content-bg-color-alt;
   border-right: 1px solid $content-border-color;
   .arrow.up,
-  .arrow.upmod { margin-top: 12px; }
+  .arrow.upmod { margin-top: 7px; }
 }
 
 .midcol {
@@ -197,5 +198,9 @@ body .RES-keyNav-activeElement {
   @extend .pseudo-icon;
   margin-right: 3px;
   @include sprite($entry-button-chat);
+}
+
+.expando .media-preview-content, .res-media-independent {
+  margin-right: 14px;
 }
 

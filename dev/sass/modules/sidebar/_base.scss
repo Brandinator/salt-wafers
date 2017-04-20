@@ -21,40 +21,50 @@
 
 
 // Swap position of advertisement and submit buttons
-body.listing-page {
-  &.moderator .side > .spacer:nth-child(2) {
-    top: 160px;
-  }
-  .side > .spacer:nth-child(2) {
-    position: relative;
-    top: 80px;
-  }
-  .side > .spacer:nth-child(3),
-  &.moderator .side > .spacer:nth-child(4) {
-    position: relative;
-    top: -262px;
-  }
-}
+// body.listing-page {
+//   &.moderator .side > .spacer:nth-child(2) {
+//     top: 160px;
+//   }
+//   .side > .spacer:nth-child(2) {
+//     position: relative;
+//     top: 80px;
+//   }
+//   .side > .spacer:nth-child(3),
+//   &.moderator .side > .spacer:nth-child(4) {
+//     position: relative;
+//     top: -262px;
+//   }
+// }
 
 @import 'submit-buttons';
 
 // Headings
 .heading {
   box-sizing: border-box;
-  padding: 4px 12px;
-  color: #fff;
   @include calibri;
   font-size: 20px;
   text-transform: uppercase;
-  background-color: $primary-color;
 }
-.md h2, .spacer > .sidecontentbox .title {
+
+
+.side .md h2, .spacer > .sidecontentbox .title {
   @extend .heading;
-  margin-left: -($sidebar-padding);
+  padding: 4px 12px;
   width: $sidebar-width;
+  color: #fff;
+  margin-left: -($sidebar-padding);
   border: 0 solid $page-bg-color;
   border-top-width: 10px;
   border-bottom-width: 6px;
+  background-color: $primary-color;
+}
+
+.content .md h2 {
+  display: inline-block;
+  @extend .heading;
+  font-weight: bold;
+  border-bottom: 6px solid $primary-color;
+  padding-right: 20px;
 }
 
 .spacer > .sidecontentbox {
@@ -84,6 +94,37 @@ body.listing-page {
 
 .toggle input[type='checkbox'] {
   vertical-align: middle;
+  position: relative;
+  &:checked::after {
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    line-height: 17px;
+    width: 100%;
+    height: 100%;
+    font-family: "wingdings 2";
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    content: "P";
+  }
+  &:checked::before {
+    background-color: $primary-color;
+    border-color: darken($primary-color,5);
+  }
+  &::before {
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    content: '';
+    top: -3px;
+    left: -1px;
+    width: 17px;
+    height: 17px;
+    background-color: #fff;
+    border-radius: 2px;
+    border: 2px solid $content-border-color;
+  }
 }
 
 .res-sr-style-toggle {

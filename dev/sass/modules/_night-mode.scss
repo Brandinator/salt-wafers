@@ -11,10 +11,14 @@ body.res-nightmode {
     background: initial;
   }
   #header-bottom-right { background-color: $content-bg-color-n; }
-  .content { background-color: $content-bg-color-n;}
-  .link::before,
-  .organic-listing::before {
-    background-color: lighten($content-bg-color-n,2);
+  // .content { background-color: $content-bg-color-n;}
+  .link,
+  .organic-listing {
+    background-color: $content-bg-color-n;
+    &::before { background-color: lighten($content-bg-color-n,3) };
+  }
+  .RES-keyNav-activeThing {
+    background: lighten($content-bg-color-n,2);
   }
   .title a { color: $link-color-n; }
   .title a:visited { color: $link-color-alt-n; }

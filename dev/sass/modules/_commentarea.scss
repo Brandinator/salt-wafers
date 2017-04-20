@@ -20,8 +20,8 @@
     font-size: 11px;
   }
   .comment {
-    margin: 0 0 8px 0;
-    padding: 15px 10px;
+    margin: 0 0 8px 0 !important;
+    padding: 15px 10px !important;
     background-color: $content-bg-color;
     border-left: 4px solid $primary-color;
     .entry { margin-bottom: 15px; }
@@ -41,4 +41,17 @@
       border-bottom: none;
     }
   }
+}
+
+.res-commentBoxes.res-commentBoxes-rounded .comment {
+  border-radius: 0 !important;
+  margin-left: 0 !important;
+}
+
+.gold-accent.comment-visits-box {
+  box-sizing: border-box;
+  margin: 0 0 10px;
+  width: 100%;
+  max-width: none;
+  border-radius: 0;
 }
