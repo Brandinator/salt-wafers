@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     imageminMozjpeg = require('imagemin-mozjpeg'),
     spritesmith = require('gulp.spritesmith'),
     merge = require('merge-stream'),
-    buffer = require('vinyl-buffer');
+    buffer = require('vinyl-buffer'),
+    autoprefixer = require('gulp-autoprefixer');
 
 //Clean up production files
 gulp.task('clean', function(){
@@ -62,13 +63,24 @@ gulp.task('sass', function() {
   .pipe(sass({
     outputStyle: 'compressed'
   }).on('error', sass.logError))
-  .pipe(gulp.dest('./prod/'));
+  .pipe(gulp.dest('./dev/'));
+});
+
+// Auto-prefixer
+gulp.task('prefixcss', function() {
+	gulp.src('./dev/style.css')
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
+		.pipe(gulp.dest('./prod/'))
 });
 
 gulp.task('watch', function() {
   gulp.watch('dev/sass/**/*.scss', ['sass']);
+  gulp.watch('dev/style.css', ['prefixcss']);
   gulp.watch(['dev/img/*'], ['image']);
   gulp.watch(['dev/img/sprite/*'], ['sprite']);
 });
 
-gulp.task('default', ['sprite','image','sass']);
+gulp.task('default', ['sprite','image','sass','prefixcss']);

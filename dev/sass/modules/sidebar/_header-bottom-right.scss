@@ -1,4 +1,4 @@
-@include keyframes(iconBounce) {
+@keyframes iconBounce {
   20% { margin-top: -10px }
   50%, 80%, 100% { margin-top: 0; }
   60% { margin-top: -5px; }

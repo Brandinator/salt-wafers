@@ -7,6 +7,10 @@ $header04: '%%header04%%';
 $header05: '%%header05%%';
 $header06: '%%header06%%';
 $header07: '%%header07%%';
+$header08: '%%header08%%';
+$header09: '%%header09%%';
+$header10: '%%header10%%';
+$header11: '%%header11%%';
 
 $header-height: 450px;
 
@@ -245,6 +249,10 @@ input[name=uh][value$="4"] ~ a::before { background-image: url($header04); }
 input[name=uh][value$="5"] ~ a::before { background-image: url($header05); }
 input[name=uh][value$="6"] ~ a::before { background-image: url($header06); }
 input[name=uh][value$="7"] ~ a::before { background-image: url($header07); }
+input[name=uh][value$="8"] ~ a::before { background-image: url($header08); }
+input[name=uh][value$="9"] ~ a::before { background-image: url($header09); }
+input[name=uh][value$="a"] ~ a::before { background-image: url($header10); }
+input[name=uh][value$="b"] ~ a::before { background-image: url($header11); }
 
 @media (max-width: 1480px) {
   input[name=uh] ~ a::before {

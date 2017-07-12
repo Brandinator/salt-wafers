@@ -1,0 +1,23 @@
+.fancy-settings {
+  background-color: $content-bg-color;
+  padding: 10px;
+  & + .tabmenu {
+    background-color: $content-bg-color-alt;
+    display: block;
+    li {
+      display: inline-block;
+      border: 1px solid $content-border-color;
+      border-width: 0 1px 0 1px;
+      a {
+        display: inline-block;
+        border: none;
+        padding: 3px 8px;
+        font-size: 14px;
+      }
+    }
+    & + .tabpane-content {
+      background-color: $content-bg-color;
+      border: none;
+    }
+  }
+}
