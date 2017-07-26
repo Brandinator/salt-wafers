@@ -32,3 +32,14 @@
     font-size: 79px;
   }
 }
+
+.linkflair-contest {
+  &::after {
+    background-color: #da3903;
+    transform: scaleX(2);
+  }
+  .linkflairlabel {
+    background-color: #da3903;
+    border-color: darken(#da3903, 10);
+  }
+}

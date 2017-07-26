@@ -60,10 +60,18 @@ gulp.task('image', function(){
 // Transpile SCSS
 gulp.task('sass', function() {
   gulp.src('./dev/sass/*.scss')
+
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions'],
+    cascade: false,
+    flexbox: false
+  }))
+
   .pipe(sass({
     outputStyle: 'compressed'
   }).on('error', sass.logError))
-  .pipe(gulp.dest('./dev/'));
+    
+  .pipe(gulp.dest('./prod/'));
 });
 
 // Auto-prefixer
@@ -71,7 +79,8 @@ gulp.task('prefixcss', function() {
 	gulp.src('./dev/style.css')
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions'],
-			cascade: false
+      cascade: false,
+      flexbox: false
 		}))
 		.pipe(gulp.dest('./prod/'))
 });
@@ -83,4 +92,4 @@ gulp.task('watch', function() {
   gulp.watch(['dev/img/sprite/*'], ['sprite']);
 });
 
-gulp.task('default', ['sprite','image','sass','prefixcss']);
+gulp.task('default', ['sprite','image','sass']);
